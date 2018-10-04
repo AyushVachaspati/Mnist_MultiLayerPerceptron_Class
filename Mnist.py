@@ -142,6 +142,4 @@ class Mnist:
             print "accuracy = " + str(curr_accuracy)
             if curr_accuracy >= saved_accuracy:
                 self.save_model()
-                !tar -czvf saved_model.tar.gz saved_model
-                print self.upload_to_google_drive(filename,folder_id)
                 saved_accuracy= curr_accuracy
