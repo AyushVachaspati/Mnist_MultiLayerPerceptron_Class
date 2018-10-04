@@ -11,9 +11,8 @@ class Mnist:
     #model global variables which are required to give input and get output
     minimize = None
     y_pred = None
-    pixels = tf.placeholder(dtype = tf.float32, shape = [batch_size, num_pixels])
-    labels = tf.placeholder(dtype = tf.float32, shape = [batch_size,num_labels])
-    
+    pixels = None
+    labels = None
     def __init__(self,num_pixels=28*28,batch_size=16,num_labels=10,layers_cells=[800]):
         """num_pixels : number of input features/pixels in the image. default 28x28.
             batch_size : size of batch for mini batch gradient descent. default 16
@@ -24,6 +23,8 @@ class Mnist:
         self.batch_size = batch_size
         self.num_labels = num_labels
         self.layers_cells = layers_cells
+	self.pixels = tf.placeholder(dtype = tf.float32, shape = [batch_size, num_pixels])
+    	self.labels = tf.placeholder(dtype = tf.float32, shape = [batch_size,num_labels])
     
     def build_graph(self,):
         """This function builds the graph for the model and initializes the variables to be trained"""
